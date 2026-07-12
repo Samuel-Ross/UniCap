@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-slate-900 text-slate-50;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  .dark .glass {
+    @apply bg-slate-800/60 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+  
+  .glass-panel {
+    @apply bg-white/50 backdrop-blur-sm border border-white/40;
+  }
+  .dark .glass-panel {
+    @apply bg-slate-800/40 backdrop-blur-sm border border-slate-700/40;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600;
+  }
+  .dark .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400;
+  }
+}
+
+/* Print specific styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .glass, .dark .glass {
+    @apply bg-white border border-gray-200 shadow-none text-black;
+  }
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  /* Professional Print Theme overrides */
+  .print-professional {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  .print-professional * {
+    font-family: inherit !important;
+  }
+  .print-professional .glass, .print-professional .dark .glass {
+    @apply border-none shadow-none bg-white text-black;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    color: black !important;
+  }
+  .print-professional h1, .print-professional h2, .print-professional h3 {
+    @apply text-black bg-none;
+    color: black !important;
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+  }
+  .print-professional table, .print-professional th, .print-professional td {
+    border: 1px solid black !important;
+  }
+  .print-professional th {
+    @apply bg-gray-100 text-black font-bold;
+    background-color: #f3f4f6 !important;
+    color: black !important;
+    font-weight: bold !important;
+  }
+  .print-professional .bg-gradient-to-br {
+    @apply bg-none bg-white text-black border border-black shadow-none;
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+  }
+  .print-professional .text-blue-100, .print-professional .text-white, .print-professional .text-blue-600 {
+    color: black !important;
+  }
+  .print-professional .text-gradient {
+    @apply bg-none text-black;
+    background: none !important;
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+  }
+}

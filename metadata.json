@@ -1,0 +1,6 @@
+{
+  "name": "UniCap",
+  "description": "An advanced Academic & CGPA suite for Bangladesh University Students with smart UAP CSE features and offline-first tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
